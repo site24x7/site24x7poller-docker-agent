@@ -64,7 +64,7 @@ bash ./Site24x7OnPremisePoller_64bit.bin -i silent
 
 echo "Silent installation of OPP completed"
 
-# Changes in install.txt
+# Changes in conf/install.txt
 cd /opt/Site24x7OnPremisePoller/conf
 
 if [ ! ${#KEY} = 0 ]; then
