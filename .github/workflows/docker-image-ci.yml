@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: mr45/poller-agent:latest
+          tags: site24x7/poller-agent:latest

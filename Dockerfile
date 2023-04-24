@@ -4,7 +4,7 @@ LABEL maintainer="site24x7<support@site24x7.com>>"
 
 WORKDIR /opt
 
-ENV CONTAINER_ENV=true
+ENV IS_CONTAINER_ENV=true
 
 RUN apt-get update -y && \
     apt-get install -y wget && \
