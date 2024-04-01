@@ -47,13 +47,14 @@ setServerDomain
 
 DOWNLOAD_URL="$SERVER/probe/Site24x7OnPremisePoller_64bit.bin"
 
-echo Download Starts
+# Commenting the following lines as binary is already included within the image.
+# echo Download Starts
 
-echo Download URL : $DOWNLOAD_URL
+# echo Download URL : $DOWNLOAD_URL
 
-wget $DOWNLOAD_URL
+# wget $DOWNLOAD_URL
 
-echo Download Completed
+# echo Download Completed
 
 # Silent Installation
 chmod -R 755 Site24x7OnPremisePoller_64bit.bin
