@@ -21,6 +21,12 @@ PROXY="$(printenv PROXY)"
 echo "PROXY : $PROXY"
 # Proxy Ends
 
+ENABLE_NETWORK_MODULE="$(printenv ENABLE_NETWORK_MODULE)"
+if [ -z "$ENABLE_NETWORK_MODULE" ]; then
+    ENABLE_NETWORK_MODULE=false
+fi
+echo "ENABLE_NETWORK_MODULE : $ENABLE_NETWORK_MODULE"
+
 # Download and install On-Premise Poller gent based on DC.
 cd /opt
 DOWNLOAD_URL=""
@@ -46,6 +52,7 @@ setServerDomain() {
 setServerDomain
 
 DOWNLOAD_URL="$SERVER/probe/Site24x7OnPremisePoller_64bit.bin"
+NETWORKMODULE_DOWNLOAD_URL="$SERVER/network/Networkplus_lin.zip"
 
 # Commenting the following lines as binary is already included within the image.
 # echo Download Starts
@@ -64,6 +71,22 @@ echo "Silent installation of OPP starts"
 bash ./Site24x7OnPremisePoller_64bit.bin -i silent
 
 echo "Silent installation of OPP completed"
+
+
+#Download and Enable the Network Module
+if [ "$ENABLE_NETWORK_MODULE" = "true" ]; then
+    echo Going to Download Network Module...
+	echo Network Module Download URL : $NETWORKMODULE_DOWNLOAD_URL
+	wget $NETWORKMODULE_DOWNLOAD_URL
+	echo Network Module Download is completed
+	
+	echo Going to unzip the Network Module Download
+	unzip Networkplus_lin.zip -d /opt/Site24x7OnPremisePoller
+	echo Network Module is successfully extracted
+	
+	echo Going to enable the Network Module in modules.conf
+	echo -e  "\nOPMSERVER=com.site24x7.probe.network.startup.MEOpmanagerController" >> /opt/Site24x7OnPremisePoller/conf/modules.conf
+fi
 
 # Changes in conf/install.txt
 cd /opt/Site24x7OnPremisePoller/conf
