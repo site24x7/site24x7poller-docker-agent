@@ -75,10 +75,10 @@ echo "Silent installation of OPP completed"
 
 #Download and Enable the Network Module
 if [ "$ENABLE_NETWORK_MODULE" = "true" ]; then
-    echo Going to Download Network Module...
-	echo Network Module Download URL : $NETWORKMODULE_DOWNLOAD_URL
-	wget $NETWORKMODULE_DOWNLOAD_URL
-	echo Network Module Download is completed
+    #echo Going to Download Network Module...
+	#echo Network Module Download URL : $NETWORKMODULE_DOWNLOAD_URL
+	#wget $NETWORKMODULE_DOWNLOAD_URL
+	#echo Network Module Download is completed
 	
 	echo Going to unzip the Network Module Download
 	unzip Networkplus_lin.zip -d /opt/Site24x7OnPremisePoller
