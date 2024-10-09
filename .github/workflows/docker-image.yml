@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: agent:latest,agent:7.8.9
+          tags: rkthumuluri007/agent:latest,rkthumuluri007/agent:7.8.9
