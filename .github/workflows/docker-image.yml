@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: rk431/poller:latest,rk4371/poller:9.9.9
+          tags: agent:latest,agent:7.8.9
