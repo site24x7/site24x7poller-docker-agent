@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "development" ]
 
 jobs:
 
@@ -10,14 +10,6 @@ jobs:
 
     # It includes docker runtime
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        dockerfile:
-          - Dockerfile
-          - Docker-basicpoller
-        image_name:
-          - rkthumuluri007/agent
-          - rkthumuluri007/basicagent
 
     steps:
       - name: Set up QEMU
@@ -31,11 +23,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ${{ matrix.dockerfile }}
-          push: true
-          tags: ${{ matrix.image_name }}:2.2.2
+      
+      - name: Build and push Poller
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/agent:3.3.3 -f ./poller/Dockerfile -- push .
+      
+      - name: Build and push basic Poller
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/basicagent:3.3.3 -f ./pollerbasic/Dockerfile -- push .
