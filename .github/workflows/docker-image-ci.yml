@@ -13,8 +13,8 @@ jobs:
     strategy:
       matrix:
         dockerfile:
-          - Dockerfile
-          - Docker-basicpoller
+          - ./Dockerfile
+          - ./Docker-basicpoller
         image_name:
           - rkthumuluri007/agent
           - rkthumuluri007/basicagent
