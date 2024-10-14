@@ -13,6 +13,7 @@ RUN apt-get update -y && \
     apt-get install -y curl && \
     apt-get install -y iputils-ping && \
     wget -O Site24x7OnPremisePoller_64bit.bin https://staticdownloads.site24x7.com/probe/Site24x7OnPremisePoller_64bit.bin && \
+    wget -O Networkplus_lin.zip https://staticdownloads.site24x7.com/network/Networkplus_lin.zip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
