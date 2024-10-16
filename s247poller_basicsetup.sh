@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 #Author : Ramakrishna T V J
 #Company : ZOHOCORP
 
